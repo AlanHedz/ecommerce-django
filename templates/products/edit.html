@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+	<div class="container white top-space">
+		<h1>Editar Producto</h1>
+		<form method="POST">
+			{% csrf_token %}
+			{% include "includes/_form.html" with form=form %}
+			<div class="form-group text-right">
+				<a href="#">Regresar a listado de productos</a>
+				<input type="submit" value="Enviar" class="btn btn-success">
+			</div>
+		</form>
+	</div>
+{% endblock content %}

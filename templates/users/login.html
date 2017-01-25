@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-heading">Iniciar Sesión</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role='form' method="POST">
+							{% csrf_token %}
+							{% include "includes/_form_horizontal.html" with form=form %}
+							<div class="form-group top-space">
+								<div class="col-md-8 col-md-offset-2 text-center top-space">
+									<button type="submit" class="btn btn-success">
+										Iniciar Sesión
+									</button>
+									<a class="btn btn-link" href="#">¿Olvidaste tu contraseña?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

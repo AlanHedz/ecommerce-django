@@ -1,0 +1,69 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2>Dashboard</h2>
+			</div>
+			<div class="panel-body">
+				<h3>Estadisticas</h3>
+				<div class="row top-space">
+					<div class="col-xs-4 col-md-3 col-lg-2 sale-data">
+						<span>{{ total_month }}USD</span>
+						Ingresos del mes
+					</div>
+					<div class="col-xs-4 col-md-3 col-lg-2 sale-data">
+						<span>{{ total_orders }}</span>
+						Numero de ventas
+					</div>
+				</div>
+				<h3>Ventas</h3>
+				<table class="table table-borderes">
+					<thead>
+						<tr>
+							<td>ID. Venta</td>
+							<td>Comprador</td>
+							<td>Direccion</td>
+							<td>No. guía</td>
+							<td>Estatus</td>
+							<td>Fecha de venta</td>
+							<td>Acciones</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for order in orders  %}
+							<tr>
+								<td>{{ order.id }}</td>
+								<td>{{ order.recipient_name }}</td>
+								<td>{{ order.line1 }}</td>
+								<td>
+									<a href="#" data-type="text" 
+									data-pk="{{ order.id }}"
+									data-url="{% url 'products:update_order' order.id %}"
+									data-title="Numero de guia"
+									data-value="{{ order.guide_number }}" data-name="guide_number" class="set-guide-number"
+									name="guide_number">
+										
+									</a>
+								</td>
+								<td>
+									<a href="#" data-type="select" 
+									data-pk="{{ order.id }}"
+									data-url="{% url 'products:update_order' order.id %}"
+									data-title="Status"
+									data-value="{{ order.status }}" data-name="status"  
+									class="select-status"
+									data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">
+									</a>
+								</td>
+								<td>{{ order.created_at }}</td>
+								<td>Acciones</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

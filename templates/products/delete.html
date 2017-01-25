@@ -1,0 +1,4 @@
+<form method="POST" class="inline-block" action="{% url 'products:delete' product.id %}">
+	{% csrf_token %}
+	<input type="submit" class="btn btn-link red-text no-padding no-margin no-transform"  value="Eliminar">
+</form>

@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+
+{% block title %}Registrarse{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-heading">Registrarse</div>
+					<div class="panel-body">
+						<form class="form-horizontal" role='form' method="POST">
+							{% csrf_token %}
+							{% include "includes/_form_horizontal.html" with form=form %}
+							<div class="form-group top-space">
+								<div class="col-md-8 col-md-offset-2 text-center top-space">
+									<button type="submit" class="btn btn-success">
+										Registrarse
+									</button>
+									<a class="btn btn-link" href="#">¿Ya tienes una cuenta?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
